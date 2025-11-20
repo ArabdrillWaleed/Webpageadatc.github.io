@@ -1,4 +1,21 @@
 @media (max-width: 600px) {
+  #mission-slide .mv-image,
+  #mission-slide .mv-image img {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+  }
+}
+@media (max-width: 600px) {
   #mission-slide .mv-image {
     display: none !important;
   }
