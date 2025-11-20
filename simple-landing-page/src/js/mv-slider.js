@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Prevent anchor redirects on slide change (mobile)
+    sliderContainer.addEventListener('click', function(e) {
+      // Only block if the click is not directly on a nav link or button
+      if (e.target.tagName === 'A' && !e.target.classList.contains('mv-nav')) {
+        e.preventDefault();
+      }
+    }, true);
   // Check if slider exists on this page first
   const sliderContainer = document.querySelector('.mv-slider');
   if (!sliderContainer) return; // Exit early if no slider on this page

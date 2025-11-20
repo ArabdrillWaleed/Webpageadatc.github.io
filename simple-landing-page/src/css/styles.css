@@ -1,4 +1,14 @@
 @media (max-width: 600px) {
+  #mission-slide .mv-image {
+    display: none !important;
+  }
+}
+@media (max-width: 600px) {
+  #mission-slide .mv-image img {
+    display: none !important;
+  }
+}
+@media (max-width: 600px) {
   .mv-slider .mv-image img {
     display: none !important;
   }
