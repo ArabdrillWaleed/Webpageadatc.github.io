@@ -1,3 +1,8 @@
+@media (max-width: 600px) {
+  .mv-slider .mv-image img {
+    display: none !important;
+  }
+}
 #mission-slide .mv-slide-content {
   display: flex;
   flex-direction: row;
@@ -4523,6 +4528,8 @@ html{scroll-behavior:smooth}
   backface-visibility: hidden;
   transform: scale(1.1);
   transition: transform 0.3s ease-out;
+  /* Add brand green shade overlay */
+  box-shadow: 0 0 0 9999px rgba(0, 60, 52, 0.45) inset;
 }
 
 .timeline-slide::after {
@@ -7289,15 +7296,15 @@ body.facility .image-hero .hero-contact-subtitle{
 /* Timeline per-year backgrounds (migrated from inline <style> blocks) */
 .timeline-slide[data-year="1993"]::before { background-image: url('../images/faq.svg'); }
 .timeline-slide[data-year="1995"]::before { background-image: url('../images/1995.svg'); }
-.timeline-slide[data-year="2005"]::before { background-image: url('../images/simulator.svg'); }
-.timeline-slide[data-year="2006"]::before { background-image: url('../images/simulator.svg'); }
+.timeline-slide[data-year="2005"]::before { background-image: url('../images/Simulator.svg'); }
+.timeline-slide[data-year="2006"]::before { background-image: url('../images/Simulator.svg'); }
 .timeline-slide[data-year="2012"]::before { background-image: url('../images/2012.svg'); }
 .timeline-slide[data-year="2013"]::before { background-image: url('../images/2013.svg'); }
 .timeline-slide[data-year="2015"]::before { background-image: url('../images/contact.svg'); }
 .timeline-slide[data-year="2016"]::before { background-image: url('../images/2016.svg'); }
 .timeline-slide[data-year="2018"]::before { background-image: url('../images/ds600.svg'); }
 .timeline-slide[data-year="2019"]::before { background-image: url('../images/accreditations.svg'); }
-.timeline-slide[data-year="2023"]::before { background-image: url('../images/adlacenter.svg'); }
+.timeline-slide[data-year="2023"]::before { background-image: url('../images/ADLAcenter.svg'); }
 .timeline-slide[data-year="2024"]::before { background-image: url('../images/Bomco\ 1.jpg'); }
 .timeline-slide[data-year="2025"]::before { background-image: url('../images/timeline2025voc.svg'); }
 

@@ -6,24 +6,13 @@
 
 (function(){
   function getBaseDir(){
-    var script = document.currentScript || (function(){
-      var scripts = document.getElementsByTagName('script');
-      return scripts[scripts.length-1];
-    })();
-    var src = script && script.src ? script.src : window.location.href;
-    // derive the script directory then resolve a components/ subpath so it works
-    // whether the script was included as '/js/include-fragments.js' or 'js/include-fragments.js'
-    try{
-      var scriptDir = src.replace(/js\/include-fragments\.js(.*)$/,'');
-      var resolved = new URL('components/', scriptDir).href;
-      // helpful debug log for troubleshooting in the browser console
-      if(window && window.console && window.console.log){
-        console.log('[include-fragments] script.src=', src, '-> components base=', resolved);
-      }
-      return resolved;
-    }catch(e){
-      return src.replace(/js\/include-fragments\.js(.*)$/,'components/');
+    // Always resolve components/ relative to the current page location
+    var pageDir = window.location.pathname.replace(/[^\/]*$/, '');
+    var base = window.location.origin + pageDir + 'components/';
+    if(window && window.console && window.console.log){
+      console.log('[include-fragments] pageDir=', pageDir, '-> components base=', base);
     }
+    return base;
   }
 
   function fetchAndInsert(file, selector){
