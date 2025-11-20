@@ -89,6 +89,22 @@
 
 /* DIT Navigation Styles */
 .dit-nav-container {
+  }
+
+  @media (max-width: 700px) {
+    .dit-nav-container {
+      position: fixed;
+      top: auto;
+      bottom: 2.5vh;
+      left: 0;
+      right: 0;
+      transform: none;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      padding-left: 2vw;
+      padding-right: 2vw;
+    }
   position: absolute;
   top: 50%;
   left: 0;
