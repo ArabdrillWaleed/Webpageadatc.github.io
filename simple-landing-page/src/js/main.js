@@ -35,6 +35,53 @@ window.addEventListener('unhandledrejection', function (evt) {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+      // Loader logic: show loader until all images, fonts, and fragments are loaded
+      function hideSiteLoader() {
+        const loader = document.getElementById('site-loader');
+        if (loader) loader.style.display = 'none';
+        document.body.classList.remove('loading');
+      }
+
+      function allImagesLoaded() {
+        const imgs = Array.from(document.images);
+        return imgs.every(img => img.complete);
+      }
+
+      function waitForImagesAndFonts() {
+        // Wait for images
+        if (!allImagesLoaded()) {
+          let checkInterval = setInterval(() => {
+            if (allImagesLoaded()) {
+              clearInterval(checkInterval);
+              waitForFonts();
+            }
+          }, 50);
+        } else {
+          waitForFonts();
+        }
+      }
+
+      function waitForFonts() {
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(hideSiteLoader);
+        } else {
+          hideSiteLoader();
+        }
+      }
+
+      // Listen for fragments: hide loader only after fragments inserted
+      document.addEventListener('fragments:inserted', function(ev) {
+        // Wait for images and fonts after fragments
+        waitForImagesAndFonts();
+      });
+
+      // Add loading class to body
+      document.body.classList.add('loading');
+
+      // Fallback: hide loader after window.onload (all resources loaded)
+      window.addEventListener('load', function() {
+        hideSiteLoader();
+      });
     // Expose idempotent initializers so they can be called after fragments
     // are dynamically inserted into the page. These functions are safe to
     // call multiple times; they protect against double-registration.
